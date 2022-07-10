@@ -1,0 +1,44 @@
+.accordion{
+    width: $full-width;
+    padding: 18px;
+    
+    &__tag{
+      width: 100%;
+      letter-spacing: 2px;
+      margin-bottom: .5rem;
+      color: $color-tag
+    }
+
+    &__title{
+      width: 70%;
+      margin-bottom: 2rem;
+      line-height: 41px;
+    }
+
+    &__item{
+      width: $full-width;
+      background-color: $color-dark-gray;
+      border-radius: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      align-items: center;
+      padding: 18px;
+      overflow: hidden;
+      transition: height 0.3s;
+
+      &__icon{
+        width: 14px;
+        height: 8px;
+        transform: rotate(180deg);
+      }
+
+    }
+
+    &__content{
+      padding-top: 18px;
+      padding-bottom: 38px;
+    }
+}
+

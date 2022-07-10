@@ -1,0 +1,13 @@
+//  This file contains all application relevant Sass variables
+
+// Regular font family
+
+
+$full-width: 100% !default;
+
+// Screen breakpoints
+$breakpoints: (
+  'small': 450px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;

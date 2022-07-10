@@ -1,0 +1,30 @@
+// This file contains CSS helper classes.
+
+
+/**
+  * Main content containers
+  * - Make the container full-width with a maximum width
+  * - Center it in the viewport
+  * - Leave some space on the edges, especially valuable on small screens
+  */
+.container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 115px 0px ;
+  flex-wrap: wrap;
+}
+.item {
+  flex: 0 40%;
+  &:nth-child(1){
+    margin-left: 90px;
+  }
+  &:nth-child(2){
+    margin-right: 90px;
+  }
+}
+
+.pointer{
+  cursor: pointer;
+}
