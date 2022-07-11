@@ -7,14 +7,14 @@
 $ npm install
 
 # serve with hot reload at localhost:3000
-$ npm dev
+$ npm run dev
 
 # build for production and launch server
-$ npm build
-$ npm start
+$ npm run build
+$ npm run start
 
 # generate static project
-$ npm generate
+$ npm run generate
 ```
 
 
