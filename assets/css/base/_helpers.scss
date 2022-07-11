@@ -16,12 +16,39 @@
   flex-wrap: wrap;
 }
 .item {
-  flex: 0 40%;
-  &:nth-child(1){
-    margin-left: 90px;
+  @include sm{
+    flex: 0 100%
+  };
+
+  @include rwd(1400px){
+    flex: 0 40%
   }
+
+  &:nth-child(1){
+    width: $full-width;
+    display: none;
+    @include sm{
+      margin-left: 90px;
+      margin-right: 90px;
+    };
+  
+    @include rwd(1100px){
+      display: block;
+      margin-left: 90px;
+      margin-right: 0px;
+    }
+  }
+
   &:nth-child(2){
-    margin-right: 90px;
+    @include sm{
+      margin-left: 90px;
+      margin-right: 90px;
+    };
+  
+    @include rwd(1400px){
+      margin-left: 0px;
+      margin-right: 90px;
+    }
   }
 }
 

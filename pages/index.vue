@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ImageBox class="item"/>
+    <ImageBox  class="item"/>
     <div class="item">
       <Accordion 
         :tag="data.tag"
@@ -21,11 +21,13 @@ export default {
   data(){
     return {
       data: null,
+      windowWidth: ''
     }
   },  
   async fetch(){
     this.data = await this.$http.$get('https://eoyge3duj7xtdqd.m.pipedream.net/');
   },
+
 
 }
 </script>
