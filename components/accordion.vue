@@ -1,5 +1,5 @@
 <template>
-    <div class="accordion ">
+    <div class="accordion">
       <h6 class="accordion__tag"> {{ tag }}</h6>
       <h1 class="accordion__title"> {{ title }}</h1>
       
@@ -38,7 +38,7 @@ export default {
   props: {
     tag:{
       type: String,
-      default: null
+      default: 'Title'
     },
     title: {
       type: String,
@@ -61,7 +61,7 @@ export default {
   },
 
   mounted() {
-    this.sumHeight = this.defaultHeight + this.$refs.text0[0].clientHeight - this.offset;
+    this.sumHeight = this.defaultHeight + this.$refs.text0?.[0]?.clientHeight - this.offset;
     this.$nextTick(() => {
       this.onResize();
     })
