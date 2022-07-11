@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <ImageBox  class="item"/>
+    <img 
+      src="@/assets/images/marketing-image.png"
+      class="item"
+    />
     <div class="item">
       <Accordion 
         :tag="data.tag"
@@ -18,23 +21,16 @@ export default {
   components: { 
     Accordion 
   },
-  data(){
+
+  data() {
     return {
       data: null,
-      windowWidth: ''
     }
-  },  
-  async fetch(){
-    this.data = await this.$http.$get('https://eoyge3duj7xtdqd.m.pipedream.net/');
   },
 
-
+  async fetch() {
+    this.data = await this.$http.$get('https://eoyge3duj7xtdqd.m.pipedream.net/');
+  },
 }
 </script>
 
-<style>
-.title{
-  padding-left: 18px !important;
-  margin-bottom: 1.125rem;
-}
-</style>

@@ -2,9 +2,10 @@
     <div class="accordion ">
       <h6 class="accordion__tag"> {{ tag }}</h6>
       <h1 class="accordion__title"> {{ title }}</h1>
-      <div v-for="(item, index) in data"
+      
+      <button v-for="(item, index) in data"
         class="accordion__item pointer"
-        :style="expandedIndex === index ? `height: ${sumHeight}px` :'height:60px' "
+        :style="expandedIndex === index ? `height: ${sumHeight}px` : `height: ${defaultHeight}px` "
         @click="toggle(index)"
         :key="item.tag"
       >
@@ -14,11 +15,13 @@
         >
           {{ item.title}} 
         </h2>
+
         <img 
           src="@/assets/images/icons/arrow.png" 
           class="accordion__item__icon"
           :class="expandedIndex === index ? 'accordion__item__icon--expanded' : ''"
         />
+        
         <div 
           class="accordion__content" 
           :ref="`text${index}`"
@@ -26,12 +29,12 @@
           <p> {{ item.text}} </p>
           <img :src="item.image" class="accordion__content__img"/>
         </div>
-      </div>
+      </button>
     </div>
 </template>
 
 <script>
-export default{
+export default {
   props: {
     tag:{
       type: String,
@@ -47,41 +50,41 @@ export default{
     }
   },  
 
-  data(){
+  data() {
     return{
       expandedIndex: -1,
       items: [],
-      sumHeight: 0
+      sumHeight: 0,
+      defaultHeight: 60,
+      offset: 18,
     }
   },
-  async fetch(){
-    this.items = await this.$http.$get('https://eoyge3duj7xtdqd.m.pipedream.net/');
-  },
-  mounted(){
-    this.sumHeight = 60 + this.$refs.text0[0].clientHeight - 18;
-    this.$nextTick(function () {
+
+  mounted() {
+    this.sumHeight = this.defaultHeight + this.$refs.text0[0].clientHeight - this.offset;
+    this.$nextTick(() => {
       this.onResize();
     })
     window.addEventListener('resize', this.onResize)
   },
 
-  methods: {
-  toggle(index) {
-    if (this.expandedIndex === index){
-      this.expandedIndex = 69420;
-      return
-    }
-    this.expandedIndex = index;
-    this.sumHeight = 60 + this.$refs[`text${this.expandedIndex}`][0].clientHeight - 18;
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
   },
 
-  onResize(){
-    this.expandedIndex = 69420
+  methods: {
+    toggle(index) {
+      if (this.expandedIndex === index){
+        this.expandedIndex = -1;
+        return
+      }
+      this.expandedIndex = index;
+      this.sumHeight = this.defaultHeight + this.$refs[`text${this.expandedIndex}`][0].clientHeight - this.offset;
+    },
+
+    onResize(){
+      this.expandedIndex = -1;
+    }
   }
 }
-}
 </script>
-
-<style lang="css">
-
-</style>
