@@ -8,19 +8,23 @@
         @click="toggle(index)"
         :key="item.tag"
       >
-        <h2 class="accordion__item__title">
+        <h2 
+          class="accordion__item__title"
+          :class="expandedIndex === index ? 'accordion__item__title--expanded' : ''"
+        >
           {{ item.title}} 
         </h2>
         <img 
           src="@/assets/images/icons/arrow.png" 
           class="accordion__item__icon"
+          :class="expandedIndex === index ? 'accordion__item__icon--expanded' : ''"
         />
         <div 
           class="accordion__content" 
           :ref="`text${index}`"
         >
           <p> {{ item.text}} </p>
-          <img v-if="isMobile" :src="item.image" />
+          <img :src="item.image" class="accordion__content__img"/>
         </div>
       </div>
     </div>
@@ -45,7 +49,6 @@ export default{
 
   data(){
     return{
-      isMobile: false,
       expandedIndex: -1,
       items: [],
       sumHeight: 0
@@ -56,17 +59,25 @@ export default{
   },
   mounted(){
     this.sumHeight = 60 + this.$refs.text0[0].clientHeight - 18;
+    this.$nextTick(function () {
+      this.onResize();
+    })
+    window.addEventListener('resize', this.onResize)
   },
 
   methods: {
-    toggle(index) {
-      if (this.expandedIndex === index){
-        this.expandedIndex = 69420;
-        return
-      }
-      this.expandedIndex = index;
-      this.sumHeight = 60 + this.$refs[`text${this.expandedIndex}`][0].clientHeight - 18;
+  toggle(index) {
+    if (this.expandedIndex === index){
+      this.expandedIndex = 69420;
+      return
+    }
+    this.expandedIndex = index;
+    this.sumHeight = 60 + this.$refs[`text${this.expandedIndex}`][0].clientHeight - 18;
   },
+
+  onResize(){
+    this.expandedIndex = 69420
+  }
 }
 }
 </script>

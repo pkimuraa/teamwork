@@ -6,6 +6,7 @@
       width: 100%;
       letter-spacing: 2px;
       margin-bottom: .5rem;
+      line-height: 25px;
       color: $color-tag
     }
 
@@ -32,6 +33,17 @@
         width: 14px;
         height: 8px;
         transform: rotate(180deg);
+        transition: transform 0.5s;
+
+        &--expanded{
+          transform: rotate(0deg);
+        }
+      }
+
+      &__title{      
+        &--expanded{
+          color: $light-blue
+        }
       }
 
     }
@@ -40,6 +52,15 @@
       width: $full-width;
       padding-top: 18px;
       padding-bottom: 38px;
+
+      &__img{
+        max-width: 100%;
+        display: block;
+
+        @include rwd(1100px){
+          display: none;
+        }
+      }
     }
 }
 

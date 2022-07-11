@@ -16,9 +16,7 @@
   flex-wrap: wrap;
 }
 .item {
-  @include sm{
-    flex: 0 100%
-  };
+  flex: 0 100%;
 
   @include rwd(1400px){
     flex: 0 40%
@@ -27,6 +25,7 @@
   &:nth-child(1){
     width: $full-width;
     display: none;
+    
     @include sm{
       margin-left: 90px;
       margin-right: 90px;
